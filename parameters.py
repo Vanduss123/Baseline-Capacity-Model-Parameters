@@ -7,15 +7,15 @@ peak_hours = 5
 non_peak_hours = 19
 renewable_capacity_factor = 0.30
 fossil_efficiency = 0.5
-renewable_upfront_cost = 1500 # $ dollars/kWh
-fossil_generation_cost = 1000 # $ dollars/kWh
-renewable_generation_cost = 0.052 # cents/kWh 
-fossil_generation_cost = 0.08 # cents/kWh 
-mining_revenue = 90 # $/mWh
+renewable_upfront_cost = 1500000 # $ dollars/mWh
+fossil_generation_cost = 1000000 # $ dollars/mWh
+renewable_generation_cost = 52 # $ dollars/mWh 
+fossil_generation_cost = 80 # $ dollars/mWh 
+mining_revenue = 90 # $ dollars/mWh
 fossil_emission_factor = 450
 renewable_emission_factor = 0
-electriccost_peak = 0.20 # in cents/kWh 
-electriccost_nonpeak = 0.07 # in cents/kWh
+electriccost_peak = 200 # in dollars/mWh 
+electriccost_nonpeak = 70 # in dollars/mWh
 reserve_margin = 0.15 # (1+reserve margin)* peak demand must be less than total electric generation
 
 # Current Decision Variable List
