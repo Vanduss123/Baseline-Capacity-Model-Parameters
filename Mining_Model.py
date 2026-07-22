@@ -1208,7 +1208,63 @@ def simulate_scenario(
 
     )
 
+     # ======================================================
+    # SUMMARY RESULTS
+    # ======================================================
 
+    renewable_utilization = (
+        grid["renewable_used"].sum()
+        / max(grid["renewable_generation"].sum(), 1)
+    )
+
+    summary = {
+
+        "scenario": scenario_id,
+        "scenario_name": scenario["scenario_name"],
+
+        "producer_surplus_$": producer_surplus,
+        "bitcoin_revenue_$": bitcoin_revenue,
+        "consumer_cost_$": consumer_cost,
+
+        "social_carbon_damage_$": social_carbon_damage,
+        "private_carbon_cost_$": private_carbon_cost,
+
+        "reliability_cost_$": reliability_cost,
+        "renewable_investment_$": investment_cost,
+
+        "mining_profit_$": mining_profit,
+        "profit_per_MWh_$": profit_per_mwh,
+        "mining_energy_cost_$": mining_energy_cost,
+
+        "generation_cost_$": generation_cost,
+
+        "solar_generation_MWh": grid["solar"].sum(),
+        "wind_generation_MWh": grid["wind"].sum(),
+        "fossil_generation_MWh": grid["fossil"].sum(),
+
+        "renewable_generation_MWh": grid["renewable_generation"].sum(),
+
+        "blackout_hours": int(grid["blackout"].sum()),
+        "energy_not_served_MWh": grid["energy_not_served"].sum(),
+
+        "CO2_emissions_tons": total_emissions,
+
+        "renewable_utilization": renewable_utilization,
+        "curtailment_MWh": grid["curtailment"].sum(),
+
+        "total_system_cost_$": total_system_cost,
+        "average_system_cost_$perMWh": average_system_cost,
+
+        "social_welfare_$": social_welfare
+
+    }
+
+    hourly = grid.copy()
+
+    hourly["scenario"] = scenario_id
+    hourly["scenario_name"] = scenario["scenario_name"]
+
+    return summary, hourly
 
     average_system_cost = (
 
